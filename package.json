@@ -6,7 +6,7 @@
   "scripts": {
     "client:dev": "vite",
     "server:dev": "npm --prefix server run dev",
-    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "dev": "npm run client:dev",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
