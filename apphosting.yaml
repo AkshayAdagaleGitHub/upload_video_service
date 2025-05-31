@@ -1,0 +1,13 @@
+env:
+  - variable: VITE_FIREBASE_API_KEY
+    value: "AIzaSyDdvCmDb7ld4gvWWviVc8aSpdC-jnwbWNA"
+  - variable: VITE_FIREBASE_AUTH_DOMAIN
+    value: "video-service-cdee0.firebaseapp.com"
+  - variable: VITE_FIREBASE_PROJECT_ID
+    value: "video-service-cdee0"
+  - variable: VITE_FIREBASE_STORAGE_BUCKET
+    value: "video-service-cdee0.firebasestorage.app"
+  - variable: VITE_FIREBASE_MESSAGING_SENDER_ID
+    value: "968042517761"
+  - variable: VITE_FIREBASE_APP_ID
+    value: "1:968042517761:web:e39846225fe664a81eb700"
