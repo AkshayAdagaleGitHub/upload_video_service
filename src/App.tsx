@@ -1,9 +1,9 @@
 import React from 'react';
-import { AuthProvider, useAuth } from "./components/Auth/AuthProvider.tsx";
-import SignUp from "./components/Auth/SignUp.tsx";
-import Login from "./components/Auth/Login.tsx";
-import VideoUpload from "./components/Upload/VideoUpload.tsx";
-import SignOut from "./components/Auth/SignOut.tsx";
+import { AuthProvider, useAuth } from "./components/Auth/AuthProvider";
+import SignUp from "./components/Auth/SignUp";
+import Login from "./components/Auth/Login";
+import VideoUpload from "./components/Upload/VideoUpload";
+import SignOut from "./components/Auth/SignOut";
 
 const AppContent = () => {
   const { currentUser } = useAuth();
