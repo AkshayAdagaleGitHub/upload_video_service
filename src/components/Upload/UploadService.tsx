@@ -7,28 +7,30 @@ export const uploadFileAndSaveMetadata
     try{
         const timeStamp = Date.now();
         const storageRef = ref(storage, `videos/${file.name}`);
-        await uploadBytesResumable(storageRef, file);
-        const downloadURL = await getDownloadURL(storageRef);
-        const videoDocRef = await addDoc(collection(db, "videos"), {
-            fileName: file.name,
-            size: file.size,
-            uploadTime: timeStamp,
-            fileType: file.type,
-            url: downloadURL,
-            ...additionalData
-        })
-        console.log('file uploaded ', videoDocRef.id);
-        // const uploadTask = uploadBytesResumable(storageRef, file);
-        // const snapshot
-        //     = await uploadTask.on("state_changed", (snapshot) => {
-        //     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        //     console.log("Upload is " + progress + "% done");
-        // }, (error) => {
-        //     console.log(error);
-        // }, async () => {
-        //     const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-        //     }
-        // )
+        // await uploadBytesResumable(storageRef, file);
+        //const downloadURL = await getDownloadURL(storageRef);
+
+        const uploadTask = uploadBytesResumable(storageRef, file);
+        const snapshot
+            = uploadTask.on("state_changed", (snapshot) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log("Upload is " + progress + "% done");
+        }, (error) => {
+            console.log(error);
+        }, async () => {
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+            const videoDocRef = await addDoc(collection(db, "videos"), {
+                fileName: file.name,
+                size: file.size,
+                uploadTime: timeStamp,
+                fileType: file.type,
+                url: downloadURL,
+                ...additionalData
+            })
+            console.log('file uploaded ', videoDocRef.id);
+            }
+        )
+        console.log(snapshot);
     }catch (error){
         console.log(error);
     }

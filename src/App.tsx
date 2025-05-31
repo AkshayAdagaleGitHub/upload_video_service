@@ -42,9 +42,28 @@ const AppContent = () => {
                     }}
                 >
                     <h1>Welcome, {currentUser.email}!</h1>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '20px',
+                        margin: 'auto',
+                        border: '1px solid #ccc',
+                        borderRadius: '10px',
+                        boxShadow: '0 0 10px #ccc',
+                        textAlign: 'center',
+                        fontSize: '18px',
+                        fontWeight: 'bold',
+                        color: '#000000',
+                        backgroundColor: '#f0f0f0',
+                        padding: '10px',
+                        paddingTop: '60px',
+                        paddingRight: '60px',
+                        paddingBottom: '20px',
+                        paddingLeft: '20px',
+                        position: 'relative',
+                    }}>
                         <VideoUpload />
-                        <VideoList />
+                        {/*<VideoList />*/}
                     </div>
 
                 </div>

@@ -23,6 +23,7 @@ const VideoList = () => {
             padding: '10px',
             width: '40%',
             margin: 'auto',
+            marginTop: '100px',
             position: 'relative',
             top: '50%',
         }}>
