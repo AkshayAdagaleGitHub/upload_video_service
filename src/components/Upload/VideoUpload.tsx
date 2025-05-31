@@ -87,10 +87,7 @@ export function VideoUpload() {
                     color: '#000000',
                     fontSize: '18px',
                     fontWeight: 'bold',
-                    transition: 'background-color 0.3s ease-in-out',
-                    '&:hover': {
-                        backgroundColor: '#ccc',
-                    }
+                    transition: 'background-color 0.3s ease-in-out'
                 }}>
                     <input
                         type="file"
