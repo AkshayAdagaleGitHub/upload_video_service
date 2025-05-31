@@ -8,7 +8,7 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-//    "moduleResolution": "bundler",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
@@ -22,16 +22,7 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "allowSyntheticDefaultImports": true,
-
-    "composite": true,
-    "outDir": "dist",
-//    "module": "ESNext",
-    "moduleResolution": "Node"
-
+    "allowSyntheticDefaultImports": true
   },
-//  "include": ["src"],
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts"]
-
+  "include": ["src"]
 }

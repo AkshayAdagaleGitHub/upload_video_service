@@ -3,7 +3,7 @@ import { AuthProvider, useAuth } from "./components/Auth/AuthProvider.tsx";
 import SignUp from "./components/Auth/SignUp.tsx";
 import Login from "./components/Auth/Login.tsx";
 import VideoUpload from "./components/Upload/VideoUpload.tsx";
-import VideoList from "./components/VideoList/VideoList.tsx";
+import SignOut from "./components/Auth/SignOut.tsx";
 
 const AppContent = () => {
   const { currentUser } = useAuth();
@@ -64,8 +64,10 @@ const AppContent = () => {
                     }}>
                         <VideoUpload />
                         {/*<VideoList />*/}
+                        <div>
+                            <SignOut/>
+                        </div>
                     </div>
-
                 </div>
             ) : (
                 <div className="login-page"
