@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
 import { auth } from './firebase.ts'
 import { signOut } from "@firebase/auth";
 
 const SignOut = () => {
-    const [error, setError] = useState('');
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
-        setError('')
         try{
             await signOut(auth);
         }catch(err){
-            setError(err.message);
+            console.log(err);
         }
     };
 
