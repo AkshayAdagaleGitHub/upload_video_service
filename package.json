@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently -k -n server,client -c blue,green \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:client": "vite",
+    "dev:server": "npm run dev --prefix server",
     "build": "tsc --build && vite build",
     "preview": "vite preview",
     "clean": "rimraf dist dist-declarations",
