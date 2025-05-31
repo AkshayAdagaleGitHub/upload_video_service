@@ -12,6 +12,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@firebase/auth": "^1.10.6",
+    "@firebase/firestore": "^4.7.16",
+    "@firebase/storage": "^0.13.12",
+    "deepgram": "^1.0.1",
+    "firebase": "^11.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
