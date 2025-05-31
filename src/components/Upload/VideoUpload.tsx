@@ -1,22 +1,29 @@
+
 import { useState } from 'react';
-// import { uploadFileAndSaveMetadata } from './UploadService';
 import {ref, uploadBytesResumable} from "firebase/storage";
 import {auth, storage} from "../Auth/firebase.ts";
 
 export function VideoUpload() {
     const [uploadProgress, setUploadProgress] = useState<number>(0);
     const [isUploading, setIsUploading] = useState<boolean>(false);
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-    const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
-        if (!file) return;
+        if (file) {
+            setSelectedFile(file);
+        }
+    };
+
+    const handleUpload = async () => {
+        if (!selectedFile) return;
 
         setIsUploading(true);
         try {
             const timeStamp = Date.now();
             const storageRef = ref(storage, `videos/users/${auth.currentUser?.email}/\
-            ${new Date().getUTCDate().toString().split('T')[0]}/${file.name}_{}_${timeStamp}`);
-            const uploadTask = uploadBytesResumable(storageRef, file);
+            ${new Date().getUTCDate().toString().split('T')[0]}/${selectedFile.name}_{}_${timeStamp}`);
+            const uploadTask = uploadBytesResumable(storageRef, selectedFile);
 
             uploadTask.on('state_changed',
                 (snapshot) => {
@@ -31,6 +38,7 @@ export function VideoUpload() {
                     console.log('Upload completed');
                     setIsUploading(false);
                     setUploadProgress(0);
+                    setSelectedFile(null);
                 }
             );
         } catch (error) {
@@ -83,19 +91,23 @@ export function VideoUpload() {
                     '&:hover': {
                         backgroundColor: '#ccc',
                     }
-
                 }}>
-                <input
-                    type="file"
-                    accept="video/*"
-                    onChange={handleUpload}
-                    disabled={isUploading}
-                />
+                    <input
+                        type="file"
+                        accept="video/*"
+                        onChange={handleFileSelect}
+                        disabled={isUploading}
+                    />
                 </div>
                 <div style={{ width: '200px' }}>
-                    <button disabled={isUploading}>Upload</button>
+                    <button
+                        onClick={handleUpload}
+                        disabled={isUploading || !selectedFile}
+                    >
+                        Upload
+                    </button>
                 </div>
-                    {isUploading && (
+                {isUploading && (
                     <div style={{ width: '200px' }}>
                         <div style={{
                             width: '100%',
