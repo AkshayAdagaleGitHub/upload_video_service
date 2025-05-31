@@ -19,7 +19,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "declaration": false,
-    "composite": false
+    "composite": false,
+    "allowImportingTsExtensions": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
